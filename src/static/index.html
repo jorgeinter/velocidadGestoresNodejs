@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conexion Gestores</title>
+    <link rel="stylesheet" href="index.css" />
+    <script src="index.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <h1>Bienvenido a la aplicación de Conexión Gestores</h1>
+    <p>
+      Esta es una aplicación de ejemplo para gestionar conexiones a diferentes
+      bases de datos.
+    </p>
+
+    <!-- Botones de consulta -->
+    <section>
+      <h2>Comprobar conexion con los gestores</h2>
+      <button
+        type="button"
+        id="mysql-button"
+        data-gestor="mysql"
+        class="button button-blue gestor-button"
+      >
+        MySQL
+      </button>
+      <button
+        type="button"
+        id="postgresql-button"
+        data-gestor="postgresql"
+        class="button button-green gestor-button"
+      >
+        PostgreSQL
+      </button>
+      <button
+        type="button"
+        id="sqlserver-button"
+        data-gestor="sqlserver"
+        class="button button-red gestor-button"
+      >
+        SQL Server
+      </button>
+      <button
+        type="button"
+        id="oracle-button"
+        data-gestor="oracle"
+        class="button button-purple gestor-button"
+      >
+        Oracle
+      </button>
+    </section>
+
+    <!-- Formulario de inserción -->
+    <section class="insertar-producto">
+      <form id="product-form">
+        <h2>Insertar Producto</h2>
+        <label
+          >Nombre: <input type="text" name="name" id="name" required /></label
+        ><br />
+        <label
+          >Categoría:
+          <input type="text" name="category" id="category" required /></label
+        ><br />
+        <label
+          >Precio:
+          <input
+            type="number"
+            name="price"
+            step="0.01"
+            id="price"
+            required /></label
+        ><br />
+        <label
+          >Stock:
+          <input type="number" name="stock" id="stock" required /></label
+        ><br />
+        <label
+          >Base de datos:
+          <select name="gestor" id="gestor" required>
+            <option value="mysql">MySQL</option>
+            <option value="postgresql">PostgreSQL</option>
+            <option value="sqlserver">SQL Server</option>
+            <option value="oracle">Oracle</option>
+          </select> </label
+        ><br /><br />
+
+        <button class="button" type="button" id="insertar-directo">
+          Insertar por sentencia
+        </button>
+        <button class="button" type="button" id="insertar-stored">
+          Insertar por Stored Procedure
+        </button>
+      </form>
+      <div>
+        <h1>Estado de las inserciones</h1>
+        <div class="cards-container">
+          <div class="card">
+            <div class="card-header" style="background-color: #007bff">
+              <h2>MySQL</h2>
+            </div>
+            <div class="card-body">
+              <h3>Estado de Inserción Directa</h3>
+              <p id="insertar-directo-status-mysql">N/A</p>
+              <h3>Estado de Inserción por Stored Procedure</h3>
+              <p id="insertar-stored-status-mysql">N/A</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" style="background-color: #28a745">
+              <h2>PostgreSQL</h2>
+            </div>
+            <div class="card-body">
+              <h3>Estado de Inserción Directa</h3>
+              <p id="insertar-directo-status-postgresql">N/A</p>
+              <h3>Estado de Inserción por Stored Procedure</h3>
+              <p id="insertar-stored-status-postgresql">N/A</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" style="background-color: #dc3545">
+              <h2>SQL Server</h2>
+            </div>
+            <div class="card-body">
+              <h3>Estado de Inserción Directa</h3>
+              <p id="insertar-directo-status-sqlserver">N/A</p>
+              <h3>Estado de Inserción por Stored Procedure</h3>
+              <p id="insertar-stored-status-sqlserver">N/A</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" style="background-color: #6f42c1">
+              <h2>Oracle</h2>
+            </div>
+            <div class="card-body">
+              <h3>Estado de Inserción Directa</h3>
+              <p id="insertar-directo-status-oracle">N/A</p>
+              <h3>Estado de Inserción por Stored Procedure</h3>
+              <p id="insertar-stored-status-oracle">N/A</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
