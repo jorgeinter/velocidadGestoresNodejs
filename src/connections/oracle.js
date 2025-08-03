@@ -6,8 +6,8 @@ oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
 
 // Database configuration - use environment variables in production
 const dbConfig = {
-  user: "C##dbproducto", // Changed from "sys" to regular user
-  password: process.env.ORACLE_PASSWORD || "dbproducto",
+  user: "C##ubdproducto", // Changed from "sys" to regular user
+  password: process.env.ORACLE_PASSWORD || "1234567",
   connectString: process.env.ORACLE_CONNECT_STRING || "localhost:1521/FREE",
   // For SYS user, use privilege instead of role
   privilege: process.env.ORACLE_USER === "sys" ? oracledb.SYSDBA : undefined,
