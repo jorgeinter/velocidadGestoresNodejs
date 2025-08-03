@@ -14,7 +14,7 @@ CREATE TEMPORARY TABLESPACE temp
 
 -- Step 2: Create user and assign tablespaces
 CREATE USER C##ubdproducto
-    IDENTIFIED BY 1234567
+    IDENTIFIED BY '1234567'
     DEFAULT TABLESPACE users
     TEMPORARY TABLESPACE temp
     QUOTA UNLIMITED ON users;
