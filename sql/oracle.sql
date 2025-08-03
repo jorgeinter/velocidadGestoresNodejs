@@ -43,7 +43,7 @@ INSERT INTO articulo (nombre, categoria, precio, stock) VALUES
 COMMIT;
 
 -- Stored procedure to insert data
-CREATE OR REPLACE PROCEDURE SP_insertar_producto (
+CREATE OR REPLACE PROCEDURE SP_insertar_articulo (
     p_nombre IN VARCHAR2,
     p_categoria IN VARCHAR2,
     p_precio IN NUMBER,
