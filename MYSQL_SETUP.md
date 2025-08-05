@@ -24,7 +24,7 @@ This guide helps you configure MySQL Database connection for the velocity testin
 
 2. **Configuration**:
 
-   - Set root password: `123456789` (for development)
+   - Set root password: `mysql123` (for development)
    - Default port: `3306`
    - Authentication method: Use Strong Password Encryption
 
@@ -40,7 +40,7 @@ docker pull mysql:8.0
 docker run -d \
   --name mysql-server \
   -p 3306:3306 \
-  -e MYSQL_ROOT_PASSWORD=123456789 \
+  -e MYSQL_ROOT_PASSWORD=mysql123 \
   -e MYSQL_DATABASE=dbproductos \
   mysql:8.0
 ```
@@ -59,7 +59,7 @@ Using MySQL Command Line or MySQL Workbench:
 
 ```bash
 mysql -u root -p
-# Enter password: 123456789
+# Enter password: mysql123
 ```
 
 ### 2. Create Database and User
