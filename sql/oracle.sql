@@ -50,12 +50,12 @@ CREATE OR REPLACE PROCEDURE SP_insertar_articulo (
     p_stock IN NUMBER
 ) AS
 BEGIN
-    INSERT INTO producto (nombre, categoria, precio, stock) VALUES (p_nombre, p_categoria, p_precio, p_stock);
+    INSERT INTO articulo (nombre, categoria, precio, stock) VALUES (p_nombre, p_categoria, p_precio, p_stock);
 END;
 -- use the stored procedure
 BEGIN
-    SP_insertar_producto('Producto E', 'Categoria A' , 50.00, 500);
+    SP_insertar_articulo('Producto E', 'Categoria A' , 50.00, 500);
 END;
 
 -- Test the stored procedure
-CALL SP_insertar_producto('Smartwatch', 'Electrónica', 200.00, 20);
+CALL SP_insertar_articulo('Smartwatch', 'Electrónica', 200.00, 20);
