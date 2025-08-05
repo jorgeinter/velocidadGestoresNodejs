@@ -20,7 +20,7 @@ This guide helps you configure PostgreSQL Database connection for the velocity t
 
    - Download PostgreSQL installer for Windows
    - Run installer as Administrator
-   - Set password for postgres user: `123456789`
+   - Set password for postgres user: `123456`
    - Default port: `5432`
    - Default locale: Use system locale
 
@@ -39,7 +39,7 @@ docker pull postgres:14
 docker run -d \
   --name postgres-server \
   -p 5432:5432 \
-  -e POSTGRES_PASSWORD=123456789 \
+  -e POSTGRES_PASSWORD=123456 \
   -e POSTGRES_DB=dbproductos \
   postgres:14
 ```
@@ -67,7 +67,7 @@ Using psql command line or pgAdmin:
 ```bash
 # Connect as postgres user
 psql -U postgres -h localhost -p 5432
-# Enter password: 123456789
+# Enter password: 123456
 ```
 
 ### 2. Create Database and User
