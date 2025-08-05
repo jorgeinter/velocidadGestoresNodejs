@@ -1,4 +1,4 @@
-create DATABASE IF NOT EXISTS dbproductos; -- Crear la base de datos si no existe
+IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = 'dbproductos')​ -- Crear la base de datos si no existe
 
 -- Crear la tabla de productos
 CREATE TABLE producto (
