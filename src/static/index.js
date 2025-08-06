@@ -36,6 +36,16 @@ document.addEventListener("DOMContentLoaded", () => {
   procedimientoBtn.addEventListener("click", (e) => {
     insertarProductoStored(e);
   });
+
+  // Event listeners para botones de eliminar
+  const eliminarButtons = document.querySelectorAll(".eliminar-btn");
+  eliminarButtons.forEach((btn) => {
+    btn.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const gestor = btn.getAttribute("data-gestor");
+      await eliminarInserciones(gestor);
+    });
+  });
 });
 
 const Toast = Swal.mixin({
@@ -549,5 +559,68 @@ async function testConnection(gestor) {
       console.error("Error al conectar con Oracle:", error);
       throw error;
     }
+  }
+}
+
+// Función para eliminar todas las inserciones de un gestor específico
+async function eliminarInserciones(gestor) {
+  try {
+    // Mostrar confirmación antes de eliminar
+    const result = await Swal.fire({
+      title: "¿Estás seguro?",
+      text: `Se eliminarán todas las inserciones de ${gestor.toUpperCase()}. Esta acción no se puede deshacer.`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#dc3545",
+      cancelButtonColor: "#6c757d",
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar"
+    });
+
+    if (result.isConfirmed) {
+      // Mostrar loading
+      Toast.fire({
+        icon: "info",
+        title: `Eliminando inserciones de ${gestor.toUpperCase()}...`,
+      });
+
+      // Realizar la petición DELETE
+      const response = await fetch(`/api/${gestor}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await response.json();
+
+      if (response.ok && (data.status === "success" || data.ok)) {
+        // Éxito - mostrar mensaje y resetear contadores
+        Swal.fire({
+          title: "¡Eliminado!",
+          text: `Todas las inserciones de ${gestor.toUpperCase()} han sido eliminadas.`,
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+
+        // Resetear los contadores en la interfaz
+        const contadorDirecto = document.getElementById(`insertar-directo-status-${gestor}`);
+        const contadorStored = document.getElementById(`insertar-stored-status-${gestor}`);
+
+        if (contadorDirecto) contadorDirecto.textContent = "N/A";
+        if (contadorStored) contadorStored.textContent = "N/A";
+
+      } else {
+        throw new Error(data.error || "Error al eliminar las inserciones");
+      }
+    }
+  } catch (error) {
+    console.error(`Error al eliminar inserciones de ${gestor}:`, error);
+    Swal.fire({
+      title: "Error",
+      text: `Error al eliminar las inserciones de ${gestor.toUpperCase()}: ${error.message}`,
+      icon: "error",
+      confirmButtonText: "OK",
+    });
   }
 }
